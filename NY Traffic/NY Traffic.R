@@ -1,8 +1,8 @@
 # Set working directory
-setwd('/Users/Ameet/Ameet/Classes/R/traffic')
+setwd('/Users/Ameet/Box Sync/Ameet/GitHub/R-Projects/NY Traffic')
 
 # Read Traffic collisions CSV file
-traffic=read.csv('NYPD_Motor_Vehicle_Collisions.csv')
+traffic=read.csv('/Users/Ameet/Box Sync/Ameet/Classes/R/traffic/NYPD_Motor_Vehicle_Collisions.csv')
 
 
 # Review the file structure
@@ -16,17 +16,17 @@ View(head(traffic))
 traffic$CONTRIBUTING.FACTOR=traffic$CONTRIBUTING.FACTOR.VEHICLE.1
 
 # Check the different type of vehicles that are involved in an accident
-x=table(traffic$VEHICLE.TYPE.CODE.1)
+table(traffic$VEHICLE.TYPE.CODE.1)
 
 # Combine the vehicles to a smaller set of categories
-# Two wheeler	<- BICYCLE,	MOTORCYCLE,	SCOOTER,	PEDICAB
-# Emergency vehicles <-	AMBULANCE,	FIRE TRUCK 
-# Commerical Vehicles <-	LARGE COM VEH(6 OR MORE TIRES), SMALL COM VEH(4 TIRES),	DLIVERY VEHICLE,	VAN
-# Taxi <-	TAXI
-# Passenger vehicle<-	PASSENGER VEHICLE,	SPORT UTILITY / STATION WAGON,	PICK-UP TRUCK 
-# Public Transport <-	BUS
-# Other <-	OTHER	
-# Unkown <- UNKNOWN, ""
+# 1. Two wheeler	<- BICYCLE,	MOTORCYCLE,	SCOOTER,	PEDICAB
+# 2. Emergency vehicles <-	AMBULANCE,	FIRE TRUCK 
+# 3. Commerical Vehicles <-	LARGE COM VEH(6 OR MORE TIRES), SMALL COM VEH(4 TIRES),	DLIVERY VEHICLE,	VAN
+# 4. Taxi <-	TAXI
+# 5. Passenger vehicle<-	PASSENGER VEHICLE,	SPORT UTILITY / STATION WAGON,	PICK-UP TRUCK 
+# 6. Public Transport <-	BUS
+# 7. Other <-	OTHER	
+# 8. Unkown <- UNKNOWN, ""
 
 levels(traffic$VEHICLE.TYPE.CODE.1)
 levels(traffic$VEHICLE.TYPE.CODE.1)=c('Unknown','Emergency Vehicles','Two Wheelers','Public Transport','Emergency Vehicles','Commerical Vehicles','Commerical Vehicles','Two Wheelers','Other','Passenger Vehicles','Two Wheelers','Passenger Vehicles','Two Wheelers','Commerical Vehicles','Passenger Vehicles','Taxi','Unknown','Commerical Vehicles')
@@ -35,10 +35,12 @@ levels(traffic$VEHICLE.TYPE.CODE.3)=c('Unknown','Emergency Vehicles','Two Wheele
 levels(traffic$VEHICLE.TYPE.CODE.4)=c('Unknown','Emergency Vehicles','Two Wheelers','Public Transport','Emergency Vehicles','Commerical Vehicles','Commerical Vehicles','Two Wheelers','Other','Passenger Vehicles','Two Wheelers','Passenger Vehicles','Two Wheelers','Commerical Vehicles','Passenger Vehicles','Taxi','Unknown','Commerical Vehicles')
 levels(traffic$VEHICLE.TYPE.CODE.5)=c('Unknown','Emergency Vehicles','Two Wheelers','Public Transport','Emergency Vehicles','Commerical Vehicles','Commerical Vehicles','Two Wheelers','Other','Passenger Vehicles','Two Wheelers','Passenger Vehicles','Two Wheelers','Commerical Vehicles','Passenger Vehicles','Taxi','Unknown','Commerical Vehicles')
 
-# Get approximate lon and lat info based on street details
+# Review changes
+levels(traffic$VEHICLE.TYPE.CODE.1)
+
+# A few of the longitude and latitude values are missing. However the street names , cross street names are provided. 
+# Using ggmap get approximate longitude and lattitude information based on street details
 library('ggmap')
-
-
 
 
 sort(table(traffic$LATITUDE),decreasing = TRUE)
