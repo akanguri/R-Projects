@@ -1,3 +1,6 @@
+# This script uses ggmap package. Uncomment the next line if you do not have ggmap installed. 
+#install.packages('ggmap')
+
 # Set working directory
 setwd('/Users/Ameet/Box Sync/Ameet/GitHub/R-Projects/NY Traffic')
 
@@ -41,6 +44,7 @@ levels(traffic$VEHICLE.TYPE.CODE.1)
 
 # A few of the longitude and latitude values are missing. However the street names , cross street names are provided. 
 # Using ggmap get approximate longitude and lattitude information based on street details
+
 library('ggmap')
 
 
@@ -51,7 +55,6 @@ sort(table(traffic$LONGITUDE),decreasing = TRUE)
 # Narowing down this to a more generalized category.
 levels(traffic$CONTRIBUTING.FACTOR.VEHICLE.1)
 sort(table(traffic$CONTRIBUTING.FACTOR.VEHICLE.1))
-View(traffic)
 
 # Check to see if secondary reason is specified if the primary is missing. This shows that is the primary reason is
 # either blank or "Unspecified" then the secondary ( or further) columns are also blank
@@ -77,35 +80,31 @@ NROW(traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1 %in% 'Other Vehicular',]$CONT
 
 levels(traffic$CONTRIBUTING.FACTOR.VEHICLE.1)
 sort(table(traffic$CONTRIBUTING.FACTOR.VEHICLE.1))
-View(traffic[(traffic$CONTRIBUTING.FACTOR.VEHICLE.1 %in% 'Other Vehicular'),])
-View(traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1 %in% 'Other Electronic Device',])
-View(traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1 %in% 'Physical Disability',])
+#View(traffic[(traffic$CONTRIBUTING.FACTOR.VEHICLE.1 %in% 'Other Vehicular'),])
+#View(traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1 %in% 'Other Electronic Device',])
+#View(traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1 %in% 'Physical Disability',])
 
-CONTRIBUTING.FACTOR.LEVELS= c('Unknown','Emergency Vehicles','Two Wheelers','Public Transport','Emergency Vehicles','Commerical Vehicles','Commerical Vehicles','Two Wheelers','Other','Passenger Vehicles','Two Wheelers','Passenger Vehicles','Two Wheelers','Commerical Vehicles','Passenger Vehicles','Taxi','Unknown','Commerical Vehicles')
+CONTRIBUTING.FACTOR.LEVELS= c('Unspecified', 'Mechanical Failure', 'Unsafe Driving' , 'Dizzy Driving' ,'Miscellaneous', 'Unsafe Driving', 'Mechanical Failure','Use of Electronic Devices', 'Use of Electronic Devices', 'Driver Distraction', 'Unsafe Driving', 'Rule Violations',                           
+                              'Dizzy Driving', 'Rule Violations', 'Rule Violations', 'Driver Distraction', 'Driver Distraction', 'Unsafe Driving',                                
+                              'Restricted View', 'Mechanical Failure', 'Driver Distraction', 'NY Infrastructure Issues', 'Driver Distraction' ,'NY Infrastructure Issues',                                   
+                              'Use of Electronic Devices', 'NY Infrastructure Issues', 'Miscellaneous', 'Driver Distraction', 'Miscellaneous', 'Driver Distraction',                                
+                              'Rule Violations', 'NY Infrastructure Issues', 'NY Infrastructure Issues', 'Miscellaneous',
+                              'Miscellaneous', 'Dizzy Driving', 'Driver Distraction', 'NY Infrastructure Issues',                         
+                              'Mechanical Failure', 'Mechanical Failure', 'Mechanical Failure', 'NY Infrastructure Issues',          
+                              'Rule Violations', 'Rule Violations', 'Unsafe Driving', 'Unsafe Driving', 'Unspecified','Restricted View','Restricted View')
+  
 
-levels(traffic$CONTRIBUTING.FACTOR.VEHICLE.1)=
+levels(traffic$CONTRIBUTING.FACTOR.VEHICLE.1)=CONTRIBUTING.FACTOR.LEVELS
 
-
-
-View(traffic)
 
 str(traffic)
 
-levels(traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1=='Unspecified',]$CONTRIBUTING.FACTOR.VEHICLE.2)
-
-traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1=='Unspecified'&& traffic$CONTRIBUTING.FACTOR.VEHICLE.2!='Unspecified',17]
-
-sort(table(traffic$LONGITUDE,traffic$LATITUDE),decreasing = TRUE)
-
-sort(table(traffic$CONTRIBUTING.FACTOR.VEHICLE.1),decreasing = TRUE)
-
-sort(table(traffic$CONTRIBUTING.FACTOR.VEHICLE.2),decreasing = TRUE)
-sort(table(traffic$CONTRIBUTING.FACTOR.VEHICLE.3),decreasing = TRUE)
-sort(table(traffic$CONTRIBUTING.FACTOR.VEHICLE.4),decreasing = TRUE)
-sort(table(traffic$CONTRIBUTING.FACTOR.VEHICLE.5),decreasing = TRUE)
-
+# Number of accident deaths over the years
+table(traffic$NUMBER.OF.PEDESTRIANS.KILLED+traffic$NUMBER.OF.CYCLIST.KILLED+traffic$NUMBER.OF.MOTORIST.KILLED+traffic$NUMBER.OF.PERSONS.KILLED)
 
 trafficTemp=traffic[0,]
 trafficTemp$CONTRIBUTING.FACTOR.VEHICLE=traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1==traffic$CONTRIBUTING.FACTOR.VEHICLE.2,19]
 
 #traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1==traffic$CONTRIBUTING.FACTOR.VEHICLE.2,19]<-
+
+geocode()
