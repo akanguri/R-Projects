@@ -107,4 +107,5 @@ trafficTemp$CONTRIBUTING.FACTOR.VEHICLE=traffic[traffic$CONTRIBUTING.FACTOR.VEHI
 
 #traffic[traffic$CONTRIBUTING.FACTOR.VEHICLE.1==traffic$CONTRIBUTING.FACTOR.VEHICLE.2,19]<-
 
-geocode()
+geocode('MONROE STREET, ,New York, NY')
+nrow(traffic[is.na(traffic$LONGITUDE),])
