@@ -16,7 +16,7 @@ View(head(traffic))
 
 # Since the major contributing factors are specified in Column CONTIRBUTING.FACTOR.1 we can take 
 # this as the reason for the accident.
-traffic$CONTRIBUTING.FACTOR=traffic$CONTRIBUTING.FACTOR.VEHICLE.1
+#traffic$CONTRIBUTING.FACTOR=traffic$CONTRIBUTING.FACTOR.VEHICLE.1
 
 
 # Check the different type of vehicles that are involved in an accident
@@ -98,6 +98,8 @@ levels(traffic$CONTRIBUTING.FACTOR.VEHICLE.1)=CONTRIBUTING.FACTOR.LEVELS
 
 
 str(traffic)
+
+write.csv(x = traffic,file ='/Users/Ameet/Box Sync/Ameet/Classes/R/traffic/NYPD_Motor_Vehicle_CollisionsNew.csv')
 
 # Number of accident deaths over the years
 table(traffic$NUMBER.OF.PEDESTRIANS.KILLED+traffic$NUMBER.OF.CYCLIST.KILLED+traffic$NUMBER.OF.MOTORIST.KILLED+traffic$NUMBER.OF.PERSONS.KILLED)
