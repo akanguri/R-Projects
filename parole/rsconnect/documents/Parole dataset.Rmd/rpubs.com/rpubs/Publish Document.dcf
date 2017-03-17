@@ -1,0 +1,8 @@
+name: Publish Document
+title:
+account: rpubs
+server: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/258827/61dfb579e87944ae972502d9ca2df4b8
+bundleId: https://api.rpubs.com/api/v1/document/258827/61dfb579e87944ae972502d9ca2df4b8
+url: http://rpubs.com/akanguri/258827
+when: 1489554570.02123

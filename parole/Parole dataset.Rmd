@@ -1,10 +1,10 @@
 ---
 title: "Parole Data Problem"
-output: html_notebook
-############################ Parole Data Problem  ###########################
-
+output:
+  html_notebook: default
+  pdf_document: default
 ---
-
+##### Author - Ameet Kanguri
 The parole dataset poses a unique challenge to delve into.From the given details that we know about the parolee like age, race, sex, state, sentence servered, crime type and number offences committed; can we predict accurately if a parolee is likely to violate his/her parole? We shall build a Logistic Regression model and a Tree model to predict the outcome of a parolee violating a parole given certain predictor variables.
 
 
