@@ -1,8 +1,5 @@
 # eBay
-Probability that an iPad will sell on eBay ( either new or used) given information of product data like description, biddable, price, startprice, condition, cellular, carrier, color, storage,  productline 
-
-The dependent variable in this problem is the variable sold, 
-which labels if an iPad listed on the eBay site was sold (equal to 1 if it did, and 0 if it did not). 
+Probability that an iPad will sell on eBay (either new or used) given information of product data.The dependent variable in this problem is the variable sold, which labels if an iPad listed on the eBay site was sold (equal to 1 if it did, and 0 if it did not). 
 
 The independent variables consist of 9 pieces of product data available at the time the iPad listing is posted, 
 and a unique identifier:
